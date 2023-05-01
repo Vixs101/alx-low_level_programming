@@ -1,23 +1,18 @@
-section .data
-	hello db 'Hello, Holberton!', 0
-	nl db 10
-section .text
-	global _start
+	extern printf
 
-_start:
-	; push arguments for printf onto the stack
-	push qword hello
-	push qword nl
+	section .data
+msg:		db "Hello, Holberton", 0
+fmt:		db "%s", 10, 0
 
-	; call printf
-	mov rdi, format
-	mov rsi, rsp
-	mov rax, 0
-	call printf
+	section .text
 
-	; call exit with the return value of printf
-	mov rdi, rax
-	call exit
-
-section .rodata
-	format db '%s%s', 0
+	global main
+main:
+	push 	rbp
+	mov	rdi,fmt
+	mov	rsi,msg
+	mov	rax,0
+	call	printf
+	pop	rbp
+	mov	rax,0
+	ret	
