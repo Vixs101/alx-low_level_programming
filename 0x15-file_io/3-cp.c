@@ -51,7 +51,7 @@ ssize_t copyFile(const char *sourceFile, const char *destinationFile)
 		return (-1);
 	}
 
-	fd2 = open(destinationFile, O_WRONLY | O_TRUNC | O_CREAT, 0664);
+	fd2 = open(destinationFile, O_WRONLY | O_TRUNC | O_CREAT, 0666);
 
 	if (fd2 == -1)
 	{
